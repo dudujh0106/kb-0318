@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹 개발 용어</title>
+  </head>
+  <body>
+    <header>
+      <div class="main">
+        <h2>웹 개발 용어</h2>
+      </div>
+    </header>
+    <section>
+      <table border="1">
+        <tbody id="table-body">
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <button onclick="changePage(1)">1</button>
+        <button onclick="changePage(2)">2</button>
+      </div>
+    </section>
+    <script>
+      const terms = [
+        [
+          '프론트엔드 (Front-end)',
+          'image/frontend.png',
+          'UI/UX 및 서버·데이터 관리 역할',
+        ],
+        ['백엔드 (Back-end)', 'image/backend.png', '서버·데이터 관리 역할'],
+        [
+          'HTML & CSS',
+          'image/htmlcss.png',
+          '웹페이지 구조와 스타일을 정의하는 언어',
+        ],
+        [
+          'JavaScript',
+          'image/js.png',
+          '웹페이지에서 동적인 기능을 구현하는 프로그래밍 언어',
+        ],
+        [
+          'React & Vue.js',
+          'image/reactvue.png',
+          'UI 구축을 위한 JavaScript 프레임워크',
+        ],
+        [
+          'Node.js',
+          'image/nodejs.png',
+          '서버 측 개발을 위한 JavaScript 런타임 환경',
+        ],
+        ['Django', 'image/django.png', 'Python 기반 웹 프레임워크'],
+        [
+          'Java Spring',
+          'image/javaspring.png',
+          'Java 기반 웹 애플리케이션 프레임워크',
+        ],
+        [
+          '렌더링 (Rendering)',
+          'image/rendering.png',
+          '웹 페이지를 브라우저에 표시하는 과정',
+        ],
+        [
+          '컴포넌트 (Component)',
+          'image/component.png',
+          'UI를 구성하는 독립적인 단위',
+        ],
+      ];
+      function changePage(page) {
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = '';
+        const start = (page - 1) * 4;
+        const end = start + 4;
+        const pageItems = terms.slice(start, end);
+        for (let i = 0; i < pageItems.length; i += 2) {
+          const row = document.createElement('tr');
+          for (let j = 0; j < 2; j++) {
+            if (pageItems[i + j]) {
+              const termData = pageItems[i + j];
+              const cell = document.createElement('td');
+              cell.innerHTML = `<strong>${termData[0]}</strong><br><img src="${termData[1]}" width="100" /><br>${termData[2]}`;
+              row.appendChild(cell);
+            }
+          }
+          tableBody.appendChild(row);
+        }
+      }
+      changePage(1);
+    </script>
+  </body>
+</html>
